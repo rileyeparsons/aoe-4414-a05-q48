@@ -77,11 +77,13 @@ def conv_ops(c_in, h_in, w_in, h_pool, w_pool, s, p):
   return c_out, h_out, w_out, adds, divs
   
 # initialize script arguments
-c_out = None
-h_out = None
-w_out = None
-adds = None
-divs = None
+c_in = None
+h_in = None
+w_in = None
+h_pool = None
+w_pool = None
+s = None
+p = None
 
 # parse script arguments
 if len(sys.argv)==8:
