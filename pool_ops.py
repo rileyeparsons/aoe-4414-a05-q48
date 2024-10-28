@@ -49,10 +49,6 @@ def output_map_w(w_in, p, w_pool, s):
   w_out = ((w_in + 2*p - w_pool)/s) +  1
   return w_out
 
-def get_muls(h_out, w_out, c_in, h_filt, w_filt):
-  muls = h_out*w_out*c_in*h_filt*w_filt
-  return muls
-
 def get_adds(h_out, w_out, c_in, h_pool, w_pool):
   adds = c_in*h_out*w_out*(h_pool*w_pool - 1)
   return adds
@@ -68,13 +64,14 @@ def conv_ops(c_in, h_in, w_in, h_pool, w_pool, s, p):
   h_out = output_map_h(h_in, p, h_pool, s)
   w_out = output_map_w(w_in, p, w_pool, s)
   adds = get_adds(h_out, w_out, c_in, h_pool, w_pool)
+  muls = 0
   divs = get_divs(c_in, h_out, w_out)
 
   print(c_out)
   print(h_out)
   print(w_out)
   print(adds)
-#   print(muls)
+  print(muls)
   print(divs)
 
   return c_out, h_out, w_out, adds, divs
